@@ -34,6 +34,7 @@ export default {
   overflow: hidden;
   background: rgba(247, 252, 255, 1);
   width: calc(100% - 200px);
+  margin-left: 200px;
 }
 .tags-content {
   width: 120px;
