@@ -59,16 +59,11 @@
   </div>
 </template>
 <script>
+import Sidebar from './Sidebar'
 export default {
   data() {
     return {
-      items: [
-        {
-          index: "base-management",
-          title: "入口文件",
-          icon: ""
-        }
-      ]
+      items: Sidebar
     };
   },
   computed: {
@@ -102,14 +97,14 @@ export default {
 }
 
 .sidebar >>> .el-menu-item {
-  font-size: 18px;
+  font-size: 0.18rem;
 }
 
 .sidebar >>> .el-submenu__title {
-  font-size: 18px;
+  font-size: 0.18rem;
 }
 .sidebar .el-submenu >>> .el-menu-item {
-  font-size: 14px;
+  font-size: 0.14rem;
 }
 
 .title-middle {

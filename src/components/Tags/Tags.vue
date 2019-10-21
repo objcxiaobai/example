@@ -32,9 +32,10 @@ export default {
 .tags {
   height: 50px;
   overflow: hidden;
-  background: rgba(247, 252, 255, 1);
+  background: #fff;
   width: calc(100% - 200px);
   margin-left: 200px;
+  box-shadow: -5px 50px 40px #000;
 }
 .tags-content {
   width: 120px;
@@ -42,7 +43,7 @@ export default {
   height: 100%;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 0.18rem;
   font-family: MicrosoftYaHei;
   font-weight: 400;
   color: rgba(17, 19, 20, 1);
