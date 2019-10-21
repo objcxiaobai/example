@@ -1,10 +1,10 @@
 <template>
-    <div>
-        222
-    </div>
+  <div>
+    222
+  </div>
 </template>
 <script>
 export default {
-    name:"base-Management"
-}
+  name: "base-Management"
+};
 </script>

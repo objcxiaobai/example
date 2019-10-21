@@ -14,15 +14,28 @@
         <template v-if="item.subs">
           <el-submenu :index="item.index" :key="item.index">
             <template slot="title">
-              <img v-if="item.icon" :src="item.icon" class="nav-image" alt=""/>
+              <img v-if="item.icon" :src="item.icon" class="nav-image" alt="" />
               <!-- <i class="el-icon-edit"></i> -->
-              <span  :class="{'title-middle': item.icon.length<=2}"  slot="title">{{ item.title }}</span>
+              <span
+                :class="{ 'title-middle': item.icon.length <= 2 }"
+                slot="title"
+                >{{ item.title }}</span
+              >
             </template>
 
             <template v-for="subItem in item.subs">
               <el-menu-item :index="subItem.index" :key="subItem.index">
-                <img v-if="subItem.icon" :src="subItem.icon" class="nav-image-two" alt=""/>
-                <span   :class="{'title-middle': subItem.icon.length<=2}"  slot="title">{{ subItem.title }}</span>
+                <img
+                  v-if="subItem.icon"
+                  :src="subItem.icon"
+                  class="nav-image-two"
+                  alt=""
+                />
+                <span
+                  :class="{ 'title-middle': subItem.icon.length <= 2 }"
+                  slot="title"
+                  >{{ subItem.title }}</span
+                >
               </el-menu-item>
             </template>
           </el-submenu>
@@ -33,7 +46,11 @@
           <el-menu-item :index="item.index" :key="item.index">
             <img v-if="item.icon" :src="item.icon" class="nav-image" />
             <!-- <i class="el-icon-lx-copy"></i> -->
-            <span   :class="{'title-middle': item.icon.length<=2}" slot="title">{{ item.title }}</span>
+            <span
+              :class="{ 'title-middle': item.icon.length <= 2 }"
+              slot="title"
+              >{{ item.title }}</span
+            >
           </el-menu-item>
         </template>
         <!-- 一级标题 -->
@@ -49,7 +66,7 @@ export default {
         {
           index: "base-management",
           title: "入口文件",
-          icon:""
+          icon: ""
         }
       ]
     };
@@ -58,7 +75,7 @@ export default {
     // 选择导航栏
     activeMenu() {
       return this.$route.path.replace("/", "");
-    },
+    }
   }
 };
 </script>
@@ -67,7 +84,7 @@ export default {
   display: block;
   position: absolute;
   left: 0;
-  top:0;
+  top: 0;
   /* top: 90px; */
   bottom: 0;
   width: 200px;
@@ -95,7 +112,7 @@ export default {
   font-size: 14px;
 }
 
-.title-middle{
+.title-middle {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,13 +1,11 @@
 <template>
-    <div>
-        1111
-    </div>    
+  <div>
+    1111
+  </div>
 </template>
 <script>
 export default {
-    name: "base-controller"
-}
+  name: "base-controller"
+};
 </script>
-<style scoped>
-
-</style>
+<style scoped></style>

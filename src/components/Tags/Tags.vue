@@ -1,31 +1,31 @@
 <template>
-    <div class="tags">
-        <div class="tags-content">
-            <p>{{tabsTitles}}</p>
-        </div>
+  <div class="tags">
+    <div class="tags-content">
+      <p>{{ tabsTitles }}</p>
     </div>
+  </div>
 </template>
 <script>
 export default {
-    data(){
-        return{
-            tabsTitles:"",
-        };
-    },
-    methods:{
-        setTags(route){
-            this.tabsTitles = route.meta.title
-        }
-    },
-    watch:{
-        $route(newValue,oldValue){
-            this.setTags(newValue);
-        }
-    },
-    created(){
-        this.setTags(this.$route);
+  data() {
+    return {
+      tabsTitles: ""
+    };
+  },
+  methods: {
+    setTags(route) {
+      this.tabsTitles = route.meta.title;
     }
-}
+  },
+  watch: {
+    $route(newValue) {
+      this.setTags(newValue);
+    }
+  },
+  created() {
+    this.setTags(this.$route);
+  }
+};
 </script>
 
 <style scoped>
