@@ -1,5 +1,8 @@
 <template>
   <div class="common-base">
+    <div class="common-add">
+      <el-button type="primary"  @click="addClick">添加</el-button>
+    </div>
     <el-card>
       <el-table
         border
@@ -18,10 +21,10 @@
         </el-table-column>
         <el-table-column prop="name" label="姓名"></el-table-column>
         <el-table-column prop="address" label="地址"></el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作" >
           <template v-slot="scope">
-            <el-button type="primary" @click="addClick">添加</el-button>
-            <el-button type="danger" @click="deleteClick">删除</el-button>
+            <el-button type="text" @click="lookLog(scope.$index,scope.row)">查看</el-button>
+            <el-button id="x-button--text" type="text" @click="deleteClick">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -29,39 +32,25 @@
 
     <!-- 添加 -->
     <el-dialog title="添加" :visible.sync="dialogVisible" width="40%">
-      <el-form>
-        <el-form-item label="上传图片">
-          <el-upload
-            class="avatar-uploader"
-            action="#"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-          >
-            <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-          </el-upload>
-        </el-form-item>
-        <el-form-item label="姓名">
-            <el-input></el-input>
-        </el-form-item>
-        <el-form-item label="地址">
-            <el-input></el-input>
-        </el-form-item>
-        <el-form-item>
-          <div class="from-footer">
-            <el-button @click="dialogVisible = false">取消</el-button>
-            <el-button type="primary">确定</el-button>
-          </div>
-        </el-form-item>
-      </el-form>
+        <base-form v-on:cancel-dialog="cancelDialogVisible" ></base-form>
     </el-dialog>
 
-    
+    <!-- 查看 -->
+    <el-dialog title="查看" :visible.sync="lookLogVisible" width="40%">
+        <base-form  :item="itemObj" v-bind:current="idx" v-on:cancel-dialog="cancelLookDialog"
+        v-on:success-dialog="submitEdit"
+        ></base-form>
+    </el-dialog>
+
   </div>
 </template>
 <script>
+import BaseForm from '@/components/BaseForm/BaseForm.vue';
 export default {
   name: "base-Management",
+  components:{
+    BaseForm
+  },
   data() {
     return {
       test: [
@@ -88,8 +77,10 @@ export default {
         }
       ],
       dialogVisible: false,
+      lookLogVisible:false,
 
-      imageUrl: "",
+      itemObj:{},
+      idx:0
     };
   },
   methods: {
@@ -101,6 +92,11 @@ export default {
     },
     addClick() {
       this.dialogVisible = !this.dialogVisible;
+    },
+    lookLog(index,value){
+      this.itemObj = JSON.parse(JSON.stringify(value));
+      this.idx = index;
+      this.lookLogVisible = !this.lookLogVisible;
     },
     deleteClick() {
       this.$confirm("该操作将永久删除该内容, 是否继续？","提示",{
@@ -115,9 +111,23 @@ export default {
         this.$message({type:"info",message:"已取消删除"})
       })
     },
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
+    // 打开编辑
+    cancelDialogVisible(e){
+        this.dialogVisible = e;
     },
+    // 打开查看
+    cancelLookDialog(e){
+        this.lookLogVisible = e;
+    },
+    // 编辑
+    submitEdit(e,index){
+      console.log(e,index);
+      const obj = e;
+      // 犯了经典错误,不能通过test[index]修改内容，视图不会更新的！！！
+      this.test.splice(index,1,obj);
+      this.lookLogVisible = false;
+    }
+
   }
 };
 </script>
@@ -133,32 +143,16 @@ export default {
   object-fit: cover;
 }
 
-.avatar-uploader >>> .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-.avatar-uploader >>> .el-upload:hover {
-    border-color: #409EFF;
-  }
-.avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-.avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-}
-.from-footer{
+.common-add{
+  overflow: hidden;
+  margin: 10px 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
 }
+
+#x-button--text{
+  color: #f56c6c !important; 
+}
+
 </style>
