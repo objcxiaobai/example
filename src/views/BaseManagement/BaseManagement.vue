@@ -24,7 +24,7 @@
         <el-table-column label="操作" >
           <template v-slot="scope">
             <el-button type="text" @click="lookLog(scope.$index,scope.row)">查看</el-button>
-            <el-button id="x-button--text" type="text" @click="deleteClick">删除</el-button>
+            <el-button id="x-button--text" type="text" @click="deleteClick(scope.$index)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -32,7 +32,9 @@
 
     <!-- 添加 -->
     <el-dialog title="添加" :visible.sync="dialogVisible" width="40%">
-        <base-form v-on:cancel-dialog="cancelDialogVisible" ></base-form>
+        <base-form :item="itemObj" v-on:cancel-dialog="cancelDialogVisible" 
+        v-on:success-dialog="submitAdd"
+        ></base-form>
     </el-dialog>
 
     <!-- 查看 -->
@@ -99,13 +101,14 @@ export default {
       this.idx = index;
       this.lookLogVisible = !this.lookLogVisible;
     },
-    deleteClick() {
+    deleteClick(index) {
       this.$confirm("该操作将永久删除该内容, 是否继续？","提示",{
         confirmButtonText: "确定",
         cancelButtonText: '取消',
         type: "warning"
       })
       .then(()=>{
+        this.test.splice(index,1);
         this.$message({type: "success",message: "删除成功"})
       })
       .catch(()=>{
@@ -126,7 +129,16 @@ export default {
       // 犯了经典错误,不能通过test[index]修改内容，视图不会更新的！！！
       this.test.splice(index,1,obj);
       this.lookLogVisible = false;
-    }
+    },
+    //增
+    submitAdd(e){
+      let id = this.test[this.test.length-1].id;
+      const obj = JSON.parse(JSON.stringify(e));
+      obj["id"] = ++id;
+      console.log(obj);
+      this.test.push(obj);
+      this.dialogVisible = false;
+    } 
 
   }
 };
