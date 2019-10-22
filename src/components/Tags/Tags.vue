@@ -43,7 +43,7 @@ export default {
   height: 100%;
   align-items: center;
   justify-content: center;
-  font-size: 0.18rem;
+  font-size: 18px;
   font-family: MicrosoftYaHei;
   font-weight: 400;
   color: rgba(17, 19, 20, 1);

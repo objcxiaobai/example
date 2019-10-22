@@ -59,7 +59,8 @@
   </div>
 </template>
 <script>
-import Sidebar from './Sidebar'
+import Sidebar from "./Sidebar";
+
 export default {
   data() {
     return {
@@ -97,14 +98,14 @@ export default {
 }
 
 .sidebar >>> .el-menu-item {
-  font-size: 0.18rem;
+  font-size: 18px;
 }
 
 .sidebar >>> .el-submenu__title {
-  font-size: 0.18rem;
+  font-size: 18px;
 }
 .sidebar .el-submenu >>> .el-menu-item {
-  font-size: 0.14rem;
+  font-size: 14px;
 }
 
 .title-middle {
