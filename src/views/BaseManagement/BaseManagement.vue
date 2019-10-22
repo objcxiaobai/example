@@ -94,6 +94,7 @@ export default {
       this.dialogVisible = !this.dialogVisible;
     },
     lookLog(index,value){
+      // 如果不进行深拷贝，子组件修改内容会影响到父组件
       this.itemObj = JSON.parse(JSON.stringify(value));
       this.idx = index;
       this.lookLogVisible = !this.lookLogVisible;
@@ -121,7 +122,6 @@ export default {
     },
     // 编辑
     submitEdit(e,index){
-      console.log(e,index);
       const obj = e;
       // 犯了经典错误,不能通过test[index]修改内容，视图不会更新的！！！
       this.test.splice(index,1,obj);
