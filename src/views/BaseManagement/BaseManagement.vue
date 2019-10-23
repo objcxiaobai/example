@@ -31,8 +31,8 @@
     </el-card>
 
     <!-- 添加 -->
-    <el-dialog title="添加" :visible.sync="dialogVisible" width="40%">
-        <base-form :item="itemObj" v-on:cancel-dialog="cancelDialogVisible" 
+    <el-dialog title="添加" :visible.sync="dialogVisible" width="40%" >
+        <base-form  v-on:cancel-dialog="cancelDialogVisible" 
         v-on:success-dialog="submitAdd"
         ></base-form>
     </el-dialog>
