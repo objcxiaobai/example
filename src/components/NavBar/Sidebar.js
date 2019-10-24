@@ -6,7 +6,12 @@
 const sidebarList = [
   {
     index: "base-management",
-    title: "导航栏1",
+    title: "tab基本操作",
+    icon: ""
+  },
+  {
+    index: "article-management",
+    title: "文章管理",
     icon: ""
   }
 ];

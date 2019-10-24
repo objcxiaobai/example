@@ -24,13 +24,30 @@ const routes = [
       {
         path: "/base-management",
         meta: {
-          title: "导航栏1"
+          title: "tab基本操作"
         },
         component: resolve =>
           require(["@/views/BaseManagement/BaseManagement.vue"], resolve)
+      },
+      {
+        path: "/article-management",
+        meta: {
+          title: "文章管理"
+        },
+        component: resolve =>
+          require(["@/views/ArticleManagement/ArticleManagement.vue"], resolve)
+      },
+      {
+        path: "/base-rich-text",
+        meta: {
+          title: "富文本操作"
+        },
+        component: resolve =>
+          require(["@/views/BaseRichText/BaseRichText.vue"], resolve)
       }
     ]
-  }
+  },
+  
 ];
 
 const router = new VueRouter({

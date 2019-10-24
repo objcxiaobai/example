@@ -4,7 +4,7 @@
     <tags></tags>
     <div class="content-box">
       <div class="content">
-        <router-view></router-view>
+        <router-view :key="key"></router-view>
       </div>
     </div>
   </div>
@@ -18,6 +18,11 @@ export default {
   components: {
     NavBar,
     Tags
+  },
+  computed:{
+    key(){
+      return this.$route.path
+    }
   }
 };
 </script>
