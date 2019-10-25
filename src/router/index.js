@@ -39,6 +39,7 @@ const routes = [
       },
       {
         path: "/base-rich-text",
+        name: "base-rich-text",
         meta: {
           title: "富文本操作"
         },

@@ -1,8 +1,11 @@
 <template>
   <div class="common-base">
       <RichText v-model="content"></RichText>
-      
-      <el-button @click="backContent"></el-button>
+      <div class="common-subit">
+        <el-button  type="primary"  @click="backContent">保存</el-button>
+        <p>{{index}}</p>
+      </div>
+
   </div>
 </template>
 
@@ -17,20 +20,29 @@ export default {
   data() {
     return {
       content:"",
+      index:-1,
     };
   },
   methods:{
     backContent:function(){
-      console.log("从组件回来",this.content)
+      console.log(this.index);
+      if(this.index !=-1 ){
+        const callBack ={
+          content:this.content,
+          index:this.index
+        }
+        Bus.$emit("rich-content",callBack);
+        this.$router.go(-1);
+      }
     },
   },
-
-
-
+  watch:{
+    index:function(val){
+      this.index = val;
+    }
+  },
   mounted(){
-    Bus.$on('index',e=>{
-      console.log(e);
-    })
+    this.index = this.$route.query.index;
   }
 };
 </script>
@@ -38,5 +50,9 @@ export default {
 <style scoped>
 .common-base {
   background: #fff;
+}
+.common-subit{
+  width: 100%;
+  padding: 10px 10px;
 }
 </style>
