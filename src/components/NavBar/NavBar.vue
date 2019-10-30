@@ -14,7 +14,7 @@
         <template v-if="item.subs">
           <el-submenu :index="item.index" :key="item.index">
             <template slot="title">
-              <img v-if="item.icon" :src="item.icon" class="nav-image" alt="" />
+              <img v-if="item.icon" :src="item.icon" class="nav-image" alt />
               <!-- <i class="el-icon-edit"></i> -->
               <span
                 :class="{ 'title-middle': item.icon.length <= 2 }"
@@ -29,7 +29,7 @@
                   v-if="subItem.icon"
                   :src="subItem.icon"
                   class="nav-image-two"
-                  alt=""
+                  alt
                 />
                 <span
                   :class="{ 'title-middle': subItem.icon.length <= 2 }"

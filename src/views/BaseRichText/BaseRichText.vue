@@ -1,17 +1,15 @@
 <template>
   <div class="common-base">
-      <RichText v-model="content"></RichText>
-      <div class="common-subit">
-        <el-button  type="primary"  @click="backContent">保存</el-button>
-        <p>{{index}}</p>
-      </div>
-
+    <RichText v-model="content"></RichText>
+    <div class="common-subit">
+      <el-button type="primary" @click="backContent">保存</el-button>
+    </div>
   </div>
 </template>
 
 <script>
-import Bus from '@/utils/bus.js'
 import RichText from "@/components/RichText/RichText.vue";
+import Bus from "@/utils/bus.js";
 export default {
   name: "base-rich-text",
   components: {
@@ -19,30 +17,28 @@ export default {
   },
   data() {
     return {
-      content:"",
-      index:-1,
+      content: "",
+      index: -1
     };
   },
-  methods:{
-    backContent:function(){
-      console.log(this.index);
-      if(this.index !=-1 ){
-        const callBack ={
-          content:this.content,
-          index:this.index
-        }
-        Bus.$emit("rich-content",callBack);
+  methods: {
+    backContent: function() {
+      if (this.index != -1) {
         this.$router.go(-1);
       }
-    },
+    }
   },
-  watch:{
-    index:function(val){
+  watch: {
+    index: function(val) {
       this.index = val;
     }
   },
-  mounted(){
+  mounted() {
     this.index = this.$route.query.index;
+  },
+
+  destroyed() {
+    this.$bus.$emit("success-content", this.content, this.index);
   }
 };
 </script>
@@ -51,7 +47,7 @@ export default {
 .common-base {
   background: #fff;
 }
-.common-subit{
+.common-subit {
   width: 100%;
   padding: 10px 10px;
 }

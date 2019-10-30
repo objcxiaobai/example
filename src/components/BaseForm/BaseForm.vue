@@ -88,10 +88,10 @@ export default {
       deep: true
     },
     // 监听图片发生变化
-    "item.img":function(newVal) {
-        if(newVal != ""){
-          this.imageUrl = newVal;
-        }
+    "item.img": function(newVal) {
+      if (newVal != "") {
+        this.imageUrl = newVal;
+      }
     },
     // 监听number
     current: {
@@ -102,7 +102,7 @@ export default {
   },
   mounted() {
     // 第一次加载的时候默认给,随后会调用watch
-    if(this.item.img != ""){
+    if (this.item.img != "") {
       this.imageUrl = this.item.img;
     }
   }
