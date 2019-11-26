@@ -6,6 +6,7 @@
         action="#"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
+        :on-remove="handleDelete"
       >
         <img v-if="imageUrl" :src="imageUrl" class="avatar" />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -75,6 +76,9 @@ export default {
         return;
       }
       this.$emit("success-dialog", this.fromItem, this.currentIndex);
+    },
+    handleDelete(file, fileList) {
+      console.log(file, fileList);
     }
   },
 

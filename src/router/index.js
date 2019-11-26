@@ -45,10 +45,22 @@ const routes = [
         },
         component: resolve =>
           require(["@/views/BaseRichText/BaseRichText.vue"], resolve)
+      },
+      {
+        path: "/paging",
+        name: "paging",
+        meta: {
+          title: "分页操作"
+        },
+        component: resolve => require(["@/views/Paging/Paging.vue"], resolve)
       }
     ]
   },
-  
+  {
+    path: "/login",
+    name: "login",
+    component: resolve => require(["@/views/Login/Login.vue"], resolve)
+  }
 ];
 
 const router = new VueRouter({

@@ -3,13 +3,17 @@
     <div class="tags-content">
       <p>{{ tabsTitles }}</p>
     </div>
+    <div class="tags-admin">
+      <p>{{ name }}</p>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      tabsTitles: ""
+      tabsTitles: "",
+      name: ""
     };
   },
   methods: {
@@ -24,6 +28,9 @@ export default {
   },
   created() {
     this.setTags(this.$route);
+  },
+  mounted() {
+    this.name = sessionStorage.getItem("my_username");
   }
 };
 </script>
@@ -36,6 +43,8 @@ export default {
   width: calc(100% - 200px);
   margin-left: 200px;
   box-shadow: -5px 50px 40px #000;
+  display: flex;
+  justify-content: space-between;
 }
 .tags-content {
   width: 120px;
@@ -47,5 +56,13 @@ export default {
   font-family: MicrosoftYaHei;
   font-weight: 400;
   color: rgba(17, 19, 20, 1);
+}
+.tags-admin {
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
 }
 </style>

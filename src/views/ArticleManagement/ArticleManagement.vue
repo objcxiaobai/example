@@ -44,7 +44,6 @@ export default {
       this.$router.push({ path: "/base-rich-text", query: { index: index } });
     },
     updataList(item, index) {
-      console.log(item);
       if (!item && !index) return false;
       const obj = this.test[index];
       obj.content = item;

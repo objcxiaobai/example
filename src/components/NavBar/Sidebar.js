@@ -13,6 +13,11 @@ const sidebarList = [
     index: "article-management",
     title: "文章管理",
     icon: ""
+  },
+  {
+    index: "paging",
+    title: "分页操作",
+    icon: ""
   }
 ];
 export default sidebarList;
