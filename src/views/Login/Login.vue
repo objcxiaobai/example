@@ -1,21 +1,20 @@
 <template>
   <div class="login-super">
     <div class="login-form">
-      <el-form :rules="rules"
-               ref="ruleForm"
-               :model="ruleForm">
-        <el-form-item label="账号"
-                      prop="name">
+      <el-form :rules="rules" ref="ruleForm" :model="ruleForm">
+        <el-form-item label="账号" prop="name">
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
-        <el-form-item label="密码"
-                      prop="password">
+        <el-form-item label="密码" prop="password">
           <el-input v-model="ruleForm.password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary "
-                     class="common-width"
-                     @click="submitForm('ruleForm')">登陆</el-button>
+          <el-button
+            type="primary "
+            class="common-width"
+            @click="submitForm('ruleForm')"
+            >登陆</el-button
+          >
         </el-form-item>
       </el-form>
     </div>
@@ -45,7 +44,6 @@ export default {
   methods: {
     submitForm(fromName) {
       this.$refs[fromName].validate(valid => {
-        console.log(valid);
         // 不为null
         if (valid) {
           this.$store
